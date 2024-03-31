@@ -1,20 +1,24 @@
 # GameBoomBoom
 
-rogue-like →
+> This game is an open-source rogue-like made with Phaser.js.
 
-      http://entity-systems.wikidot.com/
+## How to set up
 
-vue sur le dessus.
-génération procedural de sale.
+- Pull the project -> (git clone)
+- Install the extension biome in you vscode.
+- You can also install the phaser extension.
 
-gestion de classes aka hero une seul arme (afinité element)
+- We use pnpm so make sur to pnpm install.
+- finaly pnpm run dev.
 
-vie / bouclier (nb toucher max) (bouclier activable pour Xsec)
+## how to contribute
 
-ai pour les monstres
+- Create branch from dev branch
+  - `git switch dev; git checkout -b Feature/<feature_name>`
+- When you finished your task push your branch and ask a merge request on dev.
 
-projectile modifier. (bonus aléatoire.)
+## Join discord
 
-debug mode.
-https://0x72.itch.io/dungeontileset-ii
-geme de pouvoir (feu, glace, eau, terre, electricité, aire, black, light)
+- talk with us for more information. Please allow us three days to respond.
+
+discord link : https://discord.gg/whkJ4GvMVX
