@@ -1,0 +1,22 @@
+{
+  "name": "opengame",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "format": "pnpm biome format ./ --write",
+    "lint": "pnpm biome lint ./",
+    "check": "pnpm biome check ./",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.6.3",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "phaser": "^3.80.1"
+  }
+}
