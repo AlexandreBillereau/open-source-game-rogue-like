@@ -1,4 +1,3 @@
-import "./style.css";
 import { Scene, Game, WEBGL } from "phaser";
 
 const canvas = document.getElementById("game");
