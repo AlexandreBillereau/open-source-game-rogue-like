@@ -28,7 +28,7 @@ class GameScene extends Scene {
         end: 3,
         zeroPad: 3,
       }),
-      frameRate: 10,
+      frameRate: 4,
       repeat: Number.POSITIVE_INFINITY,
     });
 
