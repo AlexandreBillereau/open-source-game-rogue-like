@@ -22,7 +22,9 @@ class GameScene extends Scene {
     this.#player2.entity.anims.play("stand");
   }
 
-  update(_time, _delta) {}
+  update(_time, _delta) {
+    this.#player2.update(this.cursor);
+  }
 }
 
 const config = {

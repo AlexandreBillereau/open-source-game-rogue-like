@@ -48,6 +48,25 @@ export class Player extends Entity {
   }
 
   /**
+   *
+   * @param {Phaser.Types.Input.Keyboard.CursorKeys} input
+   */
+  update(input) {
+    if (input.left.isDown) {
+      this.entity.setVelocityX(-200);
+    } else if (input.right.isDown) {
+      this.entity.setVelocityX(200);
+    } else if (input.down.isDown) {
+      this.entity.setVelocityY(200);
+    } else if (input.up.isDown) {
+      this.entity.setVelocityY(-200);
+    } else {
+      this.entity.setVelocityX(0);
+      this.entity.setVelocityY(0);
+    }
+  }
+
+  /**
    * @param {Phaser.Scene} scene
    * This function supposed to load atlas assosiated with player
    */
