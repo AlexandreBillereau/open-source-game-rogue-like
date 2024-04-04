@@ -3,34 +3,40 @@ import { Scene, Game, WEBGL } from "phaser";
 const canvas = document.getElementById("game");
 
 class GameScene extends Scene {
-  textbox;
+  /** @type {Phaser.Physics.Arcade.Sprite} */
+  #player;
 
   constructor() {
     super("scene-game");
   }
 
-  create() {
-    this.textbox = this.add.text(
-      window.innerWidth / 2,
-      window.innerHeight / 2,
-      "Welcome to Phaser x Vite!",
-      {
-        color: "#FFF",
-        fontFamily: "monospace",
-        fontSize: "26px",
-      }
+  preload() {
+    this.load.atlas(
+      "gameSprites",
+      "assets/spritesPlayer.png",
+      "assets/mapPlayer.json"
     );
-
-    this.textbox.setOrigin(0.5, 0.5);
   }
 
-  update(_time, delta) {
-    if (!this.textbox) {
-      return;
-    }
+  create() {
+    this.#player = this.physics.add.sprite(200, 200, "gameSprites");
+    // this.#player.scale = 5;
+    this.anims.create({
+      key: "stand",
+      frames: this.anims.generateFrameNames("gameSprites", {
+        prefix: "stand",
+        end: 3,
+        zeroPad: 3,
+      }),
+      frameRate: 10,
+      repeat: Number.POSITIVE_INFINITY,
+    });
 
-    this.textbox.rotation += 0.0005 * delta;
+    this.cursor = this.input.keyboard.createCursorKeys();
+    this.#player.anims.play("stand");
   }
+
+  update(_time, _delta) {}
 }
 
 const config = {
