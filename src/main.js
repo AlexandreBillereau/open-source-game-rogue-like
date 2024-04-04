@@ -1,4 +1,5 @@
 import { Scene, Game, WEBGL } from "phaser";
+import { Entity } from "./entities/entity/Entity";
 
 const canvas = document.getElementById("game");
 
@@ -6,34 +7,22 @@ class GameScene extends Scene {
   /** @type {Phaser.Physics.Arcade.Sprite} */
   #player;
 
+  /** @type {Entity} */
+  #player2;
+
   constructor() {
     super("scene-game");
   }
 
   preload() {
-    this.load.atlas(
-      "gameSprites",
-      "assets/spritesPlayer.png",
-      "assets/mapPlayer.json"
-    );
+    Entity.load(this);
   }
 
   create() {
-    this.#player = this.physics.add.sprite(200, 200, "gameSprites");
-    // this.#player.scale = 5;
-    this.anims.create({
-      key: "stand",
-      frames: this.anims.generateFrameNames("gameSprites", {
-        prefix: "stand",
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 4,
-      repeat: Number.POSITIVE_INFINITY,
-    });
+    this.#player2 = new Entity(this, 400, 200);
 
     this.cursor = this.input.keyboard.createCursorKeys();
-    this.#player.anims.play("stand");
+    this.#player2.entity.anims.play("stand");
   }
 
   update(_time, _delta) {}
