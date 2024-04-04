@@ -1,13 +1,10 @@
 import { Scene, Game, WEBGL } from "phaser";
-import { Entity } from "./entities/entity/Entity";
+import { Player } from "./entities/player/player";
 
 const canvas = document.getElementById("game");
 
 class GameScene extends Scene {
-  /** @type {Phaser.Physics.Arcade.Sprite} */
-  #player;
-
-  /** @type {Entity} */
+  /** @type {Player} */
   #player2;
 
   constructor() {
@@ -15,11 +12,11 @@ class GameScene extends Scene {
   }
 
   preload() {
-    Entity.load(this);
+    Player.load(this);
   }
 
   create() {
-    this.#player2 = new Entity(this, 400, 200);
+    this.#player2 = new Player(this, 400, 300);
 
     this.cursor = this.input.keyboard.createCursorKeys();
     this.#player2.entity.anims.play("stand");

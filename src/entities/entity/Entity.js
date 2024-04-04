@@ -5,41 +5,32 @@
 export class Entity extends Phaser.GameObjects.Sprite {
   /** @type {Phaser.Scene} give by the parent*/
 
+  /** @type {Phaser.Physics.Arcade.Sprite} */
   entity;
 
+  /**
+   * @param {Phaser.Scene} scene
+   * @param {number} x position x in the scene
+   * @param {number} y position y in the scene
+   */
   constructor(scene, x, y) {
     super(scene, x, y);
-    this.create();
+    if (this.constructor === Entity) {
+      throw new Error(
+        "Entity is an abstract class and cannot be instantiated directly."
+      );
+    }
+
+    this.setUpAnimation();
+    this.setUpEntity();
   }
 
-  //todo: try with just this.anims
-  createAnimation() {
-    this.anims.create({
-      key: "walk",
-      frames: this.anims.generateFrameNames("gameSprites", {
-        prefix: "walk",
-        end: 3,
-        zeroPad: 3,
-      }),
-      // frameRate: 10,
-      repeat: Number.POSITIVE_INFINITY,
-    });
-
-    this.scene.anims.create({
-      key: "stand",
-      frames: this.scene.anims.generateFrameNames("gameSprites", {
-        prefix: "stand",
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 4,
-      repeat: Number.POSITIVE_INFINITY,
-    });
+  setUpAnimation() {
+    throw new Error("Method createAnimation() not implemented.");
   }
 
-  create() {
-    this.entity = this.scene.physics.add.sprite(this.x, this.y, "gameSprites");
-    this.createAnimation();
+  setUpEntity() {
+    throw new Error("Method create() not implemented.");
   }
 
   /**
@@ -47,10 +38,6 @@ export class Entity extends Phaser.GameObjects.Sprite {
    * this function supposed to load atlas assosiated with player
    */
   static load(scene) {
-    scene.load.atlas(
-      "gameSprites",
-      "assets/spritesPlayer.png",
-      "assets/mapPlayer.json"
-    );
+    throw new Error(`Method static load() not implemented. ${scene}`);
   }
 }
