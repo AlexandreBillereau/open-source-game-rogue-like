@@ -1,4 +1,3 @@
-import Draggabilly from "draggabilly";
 import { GameScene } from "./scene/map";
 import { Game, WEBGL } from "phaser";
 
@@ -20,8 +19,5 @@ const config = {
   scene: [GameScene],
   antialias: false,
 };
-new Game(config);
 
-// find the dev tools
-const devtool = document.getElementById("DevTool");
-new Draggabilly(devtool);
+new Game(config);
