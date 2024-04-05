@@ -42,6 +42,7 @@ const config = {
     },
   },
   scene: [GameScene],
+  antialias: false,
 };
 
 new Game(config);

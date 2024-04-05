@@ -31,12 +31,15 @@ export class Square extends Entity {
       this.entity.setVelocityX(-200);
     } else if (input.right.isDown) {
       this.entity.setVelocityX(200);
-    } else if (input.down.isDown) {
-      this.entity.setVelocityY(200);
-    } else if (input.up.isDown) {
-      this.entity.setVelocityY(-200);
     } else {
       this.entity.setVelocityX(0);
+    }
+
+    if (input.up.isDown) {
+      this.entity.setVelocityY(-200);
+    } else if (input.down.isDown) {
+      this.entity.setVelocityY(200);
+    } else {
       this.entity.setVelocityY(0);
     }
   }

@@ -45,6 +45,7 @@ export class Player extends Entity {
    */
   setUpEntity() {
     this.entity = this.scene.physics.add.sprite(this.x, this.y, "gameSprites");
+    this.entity.scale = 3;
   }
 
   /**
@@ -56,12 +57,15 @@ export class Player extends Entity {
       this.entity.setVelocityX(-200);
     } else if (input.right.isDown) {
       this.entity.setVelocityX(200);
-    } else if (input.down.isDown) {
-      this.entity.setVelocityY(200);
-    } else if (input.up.isDown) {
-      this.entity.setVelocityY(-200);
     } else {
       this.entity.setVelocityX(0);
+    }
+
+    if (input.up.isDown) {
+      this.entity.setVelocityY(-200);
+    } else if (input.down.isDown) {
+      this.entity.setVelocityY(200);
+    } else {
       this.entity.setVelocityY(0);
     }
   }
