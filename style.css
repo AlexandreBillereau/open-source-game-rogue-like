@@ -4,6 +4,61 @@ body {
   padding: 0;
 }
 
+@font-face {
+  font-family: Pixelify;
+  src: url(./public/fonts/Pixelify.ttf);
+}
+
+@font-face {
+  font-family: Nunito;
+  src: url(./public/fonts/Nunito.ttf);
+}
+
 canvas {
   display: block;
+}
+
+#DevTool {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 200px;
+  background-color: lightsteelblue;
+  border-radius: 5px;
+}
+
+#dev-tool-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: brown;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+}
+
+#dev-tool-header span {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+#dev-tool-header button {
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+  transition: 0.2s;
+}
+
+#dev-tool-header button:hover {
+  background-color: aliceblue;
 }
