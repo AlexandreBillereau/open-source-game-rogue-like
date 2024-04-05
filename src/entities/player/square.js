@@ -16,6 +16,7 @@ export class Square extends Entity {
       Phaser.Physics.Arcade.DYNAMIC_BODY
     );
     this.entity = this.square.body;
+    this.entity.debug = false;
   }
 
   setUpAnimation() {

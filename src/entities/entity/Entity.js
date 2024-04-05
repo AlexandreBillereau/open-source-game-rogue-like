@@ -20,9 +20,9 @@ export class Entity extends Phaser.GameObjects.Sprite {
         "Entity is an abstract class and cannot be instantiated directly."
       );
     }
-
     this.setUpAnimation();
     this.setUpEntity();
+    this.#debugInit();
   }
 
   setUpAnimation() {
@@ -31,6 +31,11 @@ export class Entity extends Phaser.GameObjects.Sprite {
 
   setUpEntity() {
     throw new Error("Method create() not implemented.");
+  }
+
+  #debugInit() {
+    this.entity.debugShowBody = false;
+    this.entity.debugShowVelocity = false;
   }
 
   /**

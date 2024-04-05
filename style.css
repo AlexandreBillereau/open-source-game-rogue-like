@@ -20,8 +20,8 @@ canvas {
 
 #DevTool {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50px;
+  left: 50px;
   width: 400px;
   height: 200px;
   background-color: lightsteelblue;
