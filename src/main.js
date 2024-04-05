@@ -1,5 +1,6 @@
 import { Scene, Game, WEBGL } from "phaser";
 import { Player } from "./entities/player/player";
+import { Square } from "./entities/player/square";
 
 const canvas = document.getElementById("game");
 
@@ -17,13 +18,14 @@ class GameScene extends Scene {
 
   create() {
     this.#player2 = new Player(this, 400, 300);
-
+    this.square = new Square(this, 400, 500);
     this.cursor = this.input.keyboard.createCursorKeys();
     this.#player2.entity.anims.play("stand");
   }
 
   update(_time, _delta) {
     this.#player2.update(this.cursor);
+    this.square.update(this.cursor);
   }
 }
 
