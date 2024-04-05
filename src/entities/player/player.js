@@ -53,8 +53,6 @@ export class Player extends Entity {
    * @param {Phaser.Types.Input.Keyboard.CursorKeys} input
    */
   update(input) {
-    this.entity.debugShowBody = true;
-
     if (input.left.isDown) {
       this.entity.setVelocityX(-200);
     } else if (input.right.isDown) {

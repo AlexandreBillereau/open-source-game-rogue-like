@@ -24,6 +24,7 @@ canvas {
   left: 50px;
   width: 400px;
   height: 200px;
+  max-height: 200px;
   background-color: lightsteelblue;
   border-radius: 5px;
 }
@@ -33,8 +34,8 @@ canvas {
   justify-content: space-between;
   background-color: brown;
   padding: 10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   font-family: "Nunito", Arial, Helvetica, sans-serif;
   cursor: -webkit-grab;
   cursor: grab;
@@ -63,4 +64,36 @@ canvas {
 
 #dev-tool-header button:hover {
   background-color: aliceblue;
+}
+
+.entity {
+  background-color: lightgray;
+  border-bottom: 1px solid black;
+}
+.debug-content {
+  overflow: scroll;
+}
+
+.entity-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  transition: 0.2s;
+}
+
+.entity-label:hover {
+  background-color: silver;
+  cursor: pointer;
+}
+
+.entity-body {
+  overflow: hidden;
+  /* height: 0px; */
+  padding-left: 10px;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+}
+
+.parameter {
+  display: flex;
 }

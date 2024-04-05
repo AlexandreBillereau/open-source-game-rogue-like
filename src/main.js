@@ -1,3 +1,4 @@
+import { DevTool } from "./devTool";
 import { GameScene } from "./scene/map";
 import { Game, WEBGL } from "phaser";
 
@@ -20,4 +21,5 @@ const config = {
   antialias: false,
 };
 
-new Game(config);
+const game = new Game(config);
+game.devTool = new DevTool();
