@@ -37,7 +37,7 @@ export class Entity extends Phaser.GameObjects.Sprite {
    * @param {Phaser.Scene} scene
    * this function supposed to load atlas assosiated with player
    */
-  static load(scene) {
+  static preLoad(scene) {
     throw new Error(`Method static load() not implemented. ${scene}`);
   }
 }

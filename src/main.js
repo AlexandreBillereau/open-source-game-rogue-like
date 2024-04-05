@@ -13,7 +13,7 @@ class GameScene extends Scene {
   }
 
   preload() {
-    Player.load(this);
+    Player.preLoad(this);
   }
 
   create() {

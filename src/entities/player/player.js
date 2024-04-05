@@ -70,7 +70,7 @@ export class Player extends Entity {
    * @param {Phaser.Scene} scene
    * This function supposed to load atlas assosiated with player
    */
-  static load(scene) {
+  static preLoad(scene) {
     scene.load.atlas(
       "gameSprites",
       "assets/spritesPlayer.png",
