@@ -37,15 +37,33 @@ export class InputManager {
   }
 
   listenForInput() {
+    // Set up listeners for when keys are pressed down
+    this.inputDown();
+    // Set up listeners for when keys are released
+    this.inputUp();
+  }
+
+  inputDown() {
     // Updated to use keydown-UP, keydown-DOWN, etc., for direct mapping
     Object.keys(this.keys).forEach((direction) => {
       this.keys[direction].on("down", () => {
-        this.onMove(direction);
+        this.onMove(direction, true);
       });
-
+    });
+  }
+  inputUp() {
+    // Updated to use keydown-UP, keydown-DOWN, etc., for direct mapping
+    Object.keys(this.keys).forEach((direction) => {
       this.keys[direction].on("up", () => {
         this.onMove(direction, false); // Pass false to indicate movement stop
       });
+    });
+  }
+  //to remove if necessary
+  removeKeyListeners() {
+    Object.keys(this.keys).forEach((direction) => {
+      this.keys[direction].removeAllListeners("down");
+      this.keys[direction].removeAllListeners("up");
     });
   }
 }

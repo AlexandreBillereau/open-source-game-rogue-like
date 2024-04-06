@@ -31,14 +31,14 @@ class GameScene extends Scene {
 
 const config = {
   type: WEBGL,
-  width: window.innerWidth,
-  height: window.innerHeight,
+  width: window.innerWidth * 0.8,
+  height: window.innerHeight * 0.8,
   canvas,
   physics: {
     default: "arcade",
     arcade: {
       gravity: { y: 0 },
-      // debug: true
+      debug: true,
     },
   },
   scene: [GameScene],

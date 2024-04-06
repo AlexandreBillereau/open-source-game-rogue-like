@@ -11,26 +11,10 @@ export class Player extends Entity {
     super(scene, x, y);
     this.cute = 0;
     this.speed = 200;
-    this.playerMovement = (direction) => {
-      console.log(direction);
-      switch (direction) {
-        case "up":
-          this.player.y -= 10;
-          break;
-        case "down":
-          this.player.y += 10;
-          break;
-        case "left":
-          this.player.x -= 10;
-          break;
-        case "right":
-          this.player.x += 10;
-          break;
-        default:
-          // Handle unexpected direction
-          break;
-      }
-    };
+
+    this.inputManager = new InputManager(scene, (direction, isDown) => {
+      this.handleMovement(direction, isDown);
+    });
   }
 
   /**
@@ -68,59 +52,42 @@ export class Player extends Entity {
   setUpEntity() {
     this.entity = this.scene.physics.add.sprite(this.x, this.y, "gameSprites");
     this.entity.scale = 3;
-    this.inputManager = new InputManager(this, this.playerMovement(direction));
-    this.inputManager.setLayout("ARROWS");
   }
 
   /*
 
   input manager
   */
-  update() {
-    // this.inputManager = new InputManager(this.scene,
-    // (direction) => {
-    // // Logic to move player based on direction
-    // console.log(`Moving player ${direction}`);
-    // switch (direction) {
-    //   case "up":
-    //     this.entity.setVelocityY(-this.speed);
-    //     break;
-    //   case "down":
-    //     this.entity.setVelocityY(this.speed);
-    //     break;
-    //   case "left":
-    //     this.entity.setVelocityX(-this.speed);
-    //     break;
-    //   case "right":
-    //     this.entity.setVelocityX(this.speed);
-    //     break;
-    // }
-    // });
-    // this.inputManager.setLayout("ARROWS");
-    this.playerMovement();
+
+  handleMovement(direction, isDown) {
+    const velocity = isDown ? this.speed : 0; // Move if key is down, stop if key is up
+    switch (direction) {
+      case "left":
+        this.entity.setVelocityX(-velocity);
+        break;
+      case "right":
+        this.entity.setVelocityX(velocity);
+        break;
+      case "up":
+        this.entity.setVelocityY(-velocity);
+        break;
+      case "down":
+        this.entity.setVelocityY(velocity);
+        break;
+    }
+
+    // Optionally, update the animation based on movement
+    if (isDown) {
+      this.entity.play("walk", true);
+    } else {
+      // This assumes all keys are released. You may need a more complex check.
+      this.entity.play("stand", true);
+    }
   }
 
-  /**
-   *
-   * @param {Phaser.Types.Input.Keyboard.CursorKeys} input
-   */
-  // update(input) {
-  //   if (input.left.isDown) {
-  //     this.entity.setVelocityX(-this.speed);
-  //   } else if (input.right.isDown) {
-  //     this.entity.setVelocityX(this.speed);
-  //   } else {
-  //     this.entity.setVelocityX(0);
-  //   }
-
-  //   if (input.up.isDown) {
-  //     this.entity.setVelocityY(-this.speed);
-  //   } else if (input.down.isDown) {
-  //     this.entity.setVelocityY(this.speed);
-  //   } else {
-  //     this.entity.setVelocityY(0);
-  //   }
-  // }
+  update() {
+    this.handleMovement();
+  }
 
   /**
    * @param {Phaser.Scene} scene
