@@ -4,9 +4,9 @@ export class InputManager {
   constructor(scene, onMove) {
     this.scene = scene;
     this.onMove = onMove; // Callback function for movement
+    this.keyStates = {};
 
     // Default to "WASD" layout, can be changed as needed
-    this.setLayout("WASD");
   }
 
   setLayout(layout) {
@@ -47,7 +47,7 @@ export class InputManager {
     // Updated to use keydown-UP, keydown-DOWN, etc., for direct mapping
     Object.keys(this.keys).forEach((direction) => {
       this.keys[direction].on("down", () => {
-        this.onMove(direction, true);
+        this.keyStates[direction] = true;
       });
     });
   }
@@ -55,7 +55,7 @@ export class InputManager {
     // Updated to use keydown-UP, keydown-DOWN, etc., for direct mapping
     Object.keys(this.keys).forEach((direction) => {
       this.keys[direction].on("up", () => {
-        this.onMove(direction, false); // Pass false to indicate movement stop
+        this.keyStates[direction] = false;
       });
     });
   }

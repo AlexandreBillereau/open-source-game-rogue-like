@@ -12,9 +12,11 @@ export class Player extends Entity {
     this.cute = 0;
     this.speed = 200;
 
-    this.inputManager = new InputManager(scene, (direction, isDown) => {
-      this.handleMovement(direction, isDown);
+    this.inputManager = new InputManager(scene, (direction) => {
+      this.handleMovement(direction);
     });
+
+    this.inputManager.setLayout("WASD");
   }
 
   /**
@@ -59,29 +61,33 @@ export class Player extends Entity {
   input manager
   */
 
-  handleMovement(direction, isDown) {
-    const velocity = isDown ? this.speed : 0; // Move if key is down, stop if key is up
-    switch (direction) {
-      case "left":
-        this.entity.setVelocityX(-velocity);
-        break;
-      case "right":
-        this.entity.setVelocityX(velocity);
-        break;
-      case "up":
-        this.entity.setVelocityY(-velocity);
-        break;
-      case "down":
-        this.entity.setVelocityY(velocity);
-        break;
+  handleMovement() {
+    let moving = false; // flag for animation
+    if (this.inputManager.keyStates.left) {
+      this.entity.setVelocityX(-this.speed);
+      moving = true;
+    } else if (this.inputManager.keyStates.right) {
+      this.entity.setVelocityX(this.speed);
+      moving = true;
+    } else {
+      this.entity.setVelocityX(0);
     }
 
-    // Optionally, update the animation based on movement
-    if (isDown) {
-      this.entity.play("walk", true);
+    if (this.inputManager.keyStates.up) {
+      this.entity.setVelocityY(-this.speed);
+      moving = true;
+    } else if (this.inputManager.keyStates.down) {
+      this.entity.setVelocityY(this.speed);
+      moving = true;
     } else {
-      // This assumes all keys are released. You may need a more complex check.
-      this.entity.play("stand", true);
+      this.entity.setVelocityY(0);
+    }
+
+    // Update the animation based on the movement
+    if (moving) {
+      this.entity.anims.play("walk", true);
+    } else {
+      this.entity.anims.play("stand", true);
     }
   }
 
