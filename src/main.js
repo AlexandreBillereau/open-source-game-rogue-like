@@ -1,7 +1,7 @@
 import { Scene, Game, WEBGL } from "phaser";
 import { Player } from "./entities/player/player";
 import { Square } from "./entities/player/square";
-
+import Dungeon from "./scene/Dungeon";
 const canvas = document.getElementById("game");
 
 class GameScene extends Scene {
@@ -41,7 +41,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [GameScene],
+  scene: [Dungeon],
   antialias: false,
 };
 
