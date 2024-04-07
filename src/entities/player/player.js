@@ -53,7 +53,7 @@ export class Player extends Entity {
    */
   setUpEntity() {
     this.entity = this.scene.physics.add.sprite(this.x, this.y, "gameSprites");
-    this.entity.scale = 3;
+    this.entity.scale = 2;
   }
 
   /*

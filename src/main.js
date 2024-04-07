@@ -31,8 +31,8 @@ class GameScene extends Scene {
 
 const config = {
   type: WEBGL,
-  width: window.innerWidth * 0.8,
-  height: window.innerHeight * 0.8,
+  width: window.innerWidth,
+  height: window.innerHeight,
   canvas,
   physics: {
     default: "arcade",
