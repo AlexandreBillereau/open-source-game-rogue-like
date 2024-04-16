@@ -10,7 +10,7 @@ export class Player extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y);
     this.cute = 0;
-    this.speed = 200;
+    this.speed = 100;
 
     this.inputManager = new InputManager(scene, (direction) => {
       this.handleMovement(direction);
@@ -53,7 +53,7 @@ export class Player extends Entity {
    */
   setUpEntity() {
     this.entity = this.scene.physics.add.sprite(this.x, this.y, "gameSprites");
-    this.entity.scale = 2;
+    this.entity.scale = 0.5;
   }
 
   /*
