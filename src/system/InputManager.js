@@ -9,6 +9,12 @@ export class InputManager {
     // Default to "WASD" layout, can be changed as needed
   }
 
+  /**
+   * Sets the keyboard layout for controlling the game
+   * @param {string} layout
+   *
+   */
+
   setLayout(layout) {
     if (layout === "WASD") {
       this.keys = this.scene.input.keyboard.addKeys({
