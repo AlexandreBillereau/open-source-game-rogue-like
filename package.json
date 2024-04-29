@@ -3,20 +3,24 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "module": "commonjs",
+  "exports": "./src/**",
   "scripts": {
     "format": "pnpm biome format ./ --write",
     "lint": "pnpm biome lint ./",
     "check": "pnpm biome check ./",
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --config vite/config.dev.mjs",
+    "build": "vite build --config vite/config.prod.mjs",
     "preview": "vite preview",
-    "test": "node --test"
+    "test": "node --test --es-module-specifier-resolution=node"
   },
   "devDependencies": {
     "@biomejs/biome": "1.6.3",
+    "terser": "^5.28.1",
     "vite": "^5.2.0"
   },
   "dependencies": {
+    "@mikewesthad/dungeon": "^2.0.1",
     "phaser": "^3.80.1"
   }
 }
