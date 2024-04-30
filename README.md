@@ -1,4 +1,3 @@
-# GameBoomBoom
 
 > This game is an open-source rogue-like made with Phaser.js.
 
