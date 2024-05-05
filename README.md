@@ -1,5 +1,7 @@
 > This game is an open-source rogue-like made with Phaser.js.
 
+![image](projectImg.png)
+
 # Look the documentation
 
 https://open-game-doc.vercel.app/
